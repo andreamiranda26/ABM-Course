@@ -12,7 +12,7 @@ We have outlined our model goals, parameters, and expected functions using the O
 *Model Overview*
 
 
-Purpose: This model will compare individual counts of a commonly used method: camera trapping. 
+Purpose: This model will compare individual counts of placing simulated camera traps along paths and placing cameras randomly on the landscape. 
 
 Entities, state variables, and scale: Our model will have two entities: individuals that move around the landscape and the landscape itself. The individuals will be characterized by a unique ID and will be permitted to move at specified rates and a direction that allows a creation of a path by the group of species. The landscape will include a grid of squares that will represent a unit area, scaled such that a square is equal to the distance an individual moves in a day. The landscape will also include sample locations, which will represent the location of the cameras. Cameras will be compared by their placement either placed in regards to the path of the species or placed randomly around the landscape. 
 
