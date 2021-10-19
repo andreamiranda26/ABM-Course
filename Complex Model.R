@@ -10,7 +10,7 @@ directory = getwd()
   numsteps= 10
   numreps= 5
   move = 10
-  
+  #list of parameters 
   
   parameters= expand.grid(landscape,numindiv,numsteps,move) #this creates data frame for combination of variables
   
@@ -38,6 +38,6 @@ directory = getwd()
     
     movepath = MoveIndv(numindiv, land, move, nsteps,landscape)
   
-    
+    #movements tracking , individually 
 #extract the output 
 
