@@ -3,14 +3,14 @@ setwd("~/GitHub/ABM_Course/")
 directory = getwd()
 
 
-#parameters
+#list of parameters
 
   landscape = 100
   numindiv= 50  #start off with a number of individuals 
   numsteps= 10
   numreps= 5
   move = 10
-  #list of parameters 
+  numcamera = 
   
   parameters= expand.grid(landscape,numindiv,numsteps,move) #this creates data frame for combination of variables
   
@@ -32,12 +32,12 @@ directory = getwd()
 
 
   
-#loops of some sort
+#Movement of individuals
   
   for(y in 1: )
     
     movepath = MoveIndv(numindiv, land, move, nsteps,landscape)
   
-    #movements tracking , individually 
+#Individual tracking of individual  
 #extract the output 
 
