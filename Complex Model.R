@@ -74,7 +74,7 @@ directory = getwd()
       N_prey <- sum( inds[, xcol] == xloc & inds[, ycol] == yloc);
   
   
-#Individual tracking of individual 
+#tracking of individual 
   
   
 #extract the output 
