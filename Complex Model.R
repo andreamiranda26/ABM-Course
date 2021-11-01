@@ -10,7 +10,7 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
 #list of parameters
 
   landscape = 100
-  numindiv= 50  #start off with a number of individuals 
+  numindiv= 1  #start off with a number of individuals 
   numsteps= 1 #number of steps individuals will take 
   numreps= 5  #
   move = 10   #Likelihood of individuals moving to the next cell
@@ -34,56 +34,34 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
     #pop = rbind(pop,NewPop(nindv,landscape)) #this will add the different NewPops together
     #plot(-100,-100, xlim=c(0,150), ylim=c(0,150))  #this puts the points on its own figure (note 0-150 axes)
     #points(pop[,1], pop[,2], pch=19, cex=0.5) #puts points on own fig
- 
-    NewPop = function(nindvs, landscape){
-      #how far apart should individuals be, at max?
-      variance = 25 #values is in cells
-      
-      #initialize pop object
-      pop = matrix(nrow=nindvs, ncol=2)
-      
-      #choose rough starting coordinates
-      x = sample(1:(landscape-variance), 1)
-      y = sample(1:(landscape-variance), 1)
-      
-      #set starting locations with set variance from x,y selected above
-      pop[,1]  = x + rpois(nindvs, variance)
-      pop[,2]  = y + rpois(nindvs, variance)
-      
-      return(pop)
-    }
     
-    pop = NewPop(numindiv, landscape)
-    points(pop[,1]/150, pop[,2]/150, pch=19, cex=0.5)
-    #plot(-100,-100, xlim=c(0,150), ylim=c(0,150))
-    #points(pop[,1], pop[,2], pch=19, cex=0.5)
-    
+    #allow individuals to move within landscape
+    pathways = NULL
+    for(i in 1:nrow(pop)){
+      #isolate individual of interest
+      indv = pop[i,,drop=FALSE]
+      #the i means iterates
+      
+      #chart movement
+      movepath = MoveIndv(numind, land, move, nsteps, elevation, landscape)
+      
+      #plot movement
+      lines(movepath[seq(1,length(movepath), 2)]/150, movepath[seq(2,length(movepath), 2)]/150, lwd=2)
+      
+      #record path in single object for all individuals
+      pathways = rbind(pathways, movepath)
+      
+  }
+  rownames(pathways) = seq(1,nindvs,1)
+  dev.copy(png, "../output/Butter.png") #saves it to the source folder that you had everything, albeit adding 'output' saves it in the output folder
+  dev.off() #need to add this if not it will not save, if you do the pdf code at the top and close it off then you can open it and see even through the steps. 
   
-
-  land= landscapeInit(landscape,landscape)
-  image(land)
-
-
+  #extract needed output from simulation
+  #for this project it is fine to NOT do any stats, but you will want to export something (maybe a figure) so you and
+  #everyone can see how your model worked. we will use this to talk about approaches that worked well/did not work great.
   
-#Movement function
-  
-  movement <- function(inds, xloc = 2, yloc = 3, xmax = 8, ymax = 8){
-    
-    total_inds   <- dim(inds)[1]; # Get the number of individuals in inds
-    move_dists   <- c(-1, 0, 1);  # Define the possible distances to move
-    x_move       <- sample(x = move_dists, size = total_inds, replace = TRUE);
-    y_move       <- sample(x = move_dists, size = total_inds, replace = TRUE);
-    inds[, xloc] <- inds[, xloc] + x_move;
-    inds[, yloc] <- inds[, yloc] + y_move;
-    
-    #determine if indv will move randomly or will move to higher elevation
-    movehigh = sample(x=c(0,1), size=1, prob=c((1-move), move))
-    
-    #random movement to adjacent cell/patch
-    if(movehigh==0){
-      xpos = sample(c(-1,0,1), 1) + cxpos
-      ypos = sample(c(-1,0,1), 1) + cypos
-    }
+  } 
+}
     
     #this wouold also go in the function part 
     # =========   The reflecting boundary is added below
@@ -116,7 +94,9 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
   
   
 #tracking of individual 
-  
+      
+      if(numindiv > 0){ # If there is an individual, capture them
+        sampled <- which( inds[, xcol] == xloc & inds[, ycol] == yloc);
   
 #extract the output 
 
