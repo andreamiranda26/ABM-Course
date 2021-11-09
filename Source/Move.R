@@ -1,10 +1,10 @@
-MoveIndv=function(indv, land, move, nsteps, elevation, landscape){
-  mvmt = indv[1,1:2] #x==1, y==2
+Move=function(landscape,numindiv,numsteps,move,numcamera){
+  mvmt = numindiv[1,1:2] #x==1, y==2
   for(s in 1:nsteps){
     cxpos = mvmt[(length(mvmt)-1)]
     cypos = mvmt[length(mvmt)]
     
-    #determine if indv will move randomly or will move to higher elevation
+    #determine if indiv will move randomly or will move to next cell
     movehigh = sample(x=c(0,1), size=1, prob=c((1-move), move))
     
     #random movement to adjacent cell/patch

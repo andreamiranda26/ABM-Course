@@ -1,12 +1,11 @@
 #Set working directory, import packages, source functions, 
-setwd(paste(directory,"/source/", sep = ''))    # set temp working directory 
-
+setwd("~/GitHub/ABM-Course/Source")    # set temp working directory 
 
 #import packages
 
 #library()
 
 #source functions
-source(paste(getwd(), "/LandscapeInit.R", sep = ''))
-source(paste(getwd(), "/Pop.R", sep = ''))
-source(paste(getwd(), "/MoveIndv.R", sep = ''))
+source(paste(getwd(), "/Landscape.R", sep = ''))
+source(paste(getwd(), "/POP.R", sep = ''))
+source(paste(getwd(), "/Move.R", sep = ''))

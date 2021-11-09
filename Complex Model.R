@@ -1,5 +1,5 @@
 
-setwd("~/GitHub/ABM_Course/")
+setwd("~/GitHub/ABM-Course/Source")
 
 #to make sure it is the right place you should do session then set up working directory
 directory = getwd()
@@ -17,8 +17,10 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
   numcamera = 50
   
   parameters= expand.grid(landscape,numindiv,numsteps,move,numcamera) #this creates data frame for combination of variables
+  colnames(parameters) = c("landscape","numindiv","numsteps","move","numcamera")
   
-
+  
+p=1
   for(p in 1:nrow(parameters)){
     landscape = parameters$landscape[p]
     numindiv  = parameters$numindiv[p]
@@ -29,10 +31,10 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
 
 #initialize individuals on landscape
    
-    pop = NPop(nindvs, landscape)
-    points(pop[,1]/150, pop[,2]/150, pch=21, cex=0.5)
+    pop = Pop(numindiv, landscape)
+    #points(Pop[,1]/100, Pop[,2]/100, pch=21, cex=0.5)
     #pop = rbind(pop,NewPop(nindv,landscape)) #this will add the different NewPops together
-    #plot(-100,-100, xlim=c(0,150), ylim=c(0,150))  #this puts the points on its own figure (note 0-150 axes)
+    #plot(-100,-100, xlim=c(0,100), ylim=c(0,100))  #this puts the points on its own figure (note 0-100 axes)
     #points(pop[,1], pop[,2], pch=19, cex=0.5) #puts points on own fig
     
     #allow individuals to move within landscape
@@ -42,8 +44,8 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
       indv = pop[i,,drop=FALSE]
       #the i means iterates
       
-      #chart movement
-      movepath = MoveIndv(numind, land, move, nsteps, elevation, landscape)
+ #####     #chart movement
+      movepath = MoveIndv(landscape,numindiv,numsteps,move,numcamera)
       
       #plot movement
       lines(movepath[seq(1,length(movepath), 2)]/150, movepath[seq(2,length(movepath), 2)]/150, lwd=2)
@@ -82,21 +84,54 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
     return(inds);
   }
   
-  
-#camera stations
-  
+#============================================  
+#camera stations placement?
+#============================================ 
   cameras <- function(cams, inds, xcol = 2, ycol = 3, rcol = 4, dcol = 5){
     cameras   <- dim(cams)[1]; # camera number
     for(c in 1:cameras){       # For each camera (c) in the array
       xloc   <- pred[p, xcol]; # Get the x and y locations
       yloc   <- pred[p, ycol];
-      N_prey <- sum( inds[, xcol] == xloc & inds[, ycol] == yloc);
+      numindiv <- sum( inds[, xcol] == xloc & inds[, ycol] == yloc);
   
-  
+#=======================================  
 #tracking of individual 
-      
+#=======================================      
       if(numindiv > 0){ # If there is an individual, capture them
         sampled <- which( inds[, xcol] == xloc & inds[, ycol] == yloc);
+        if(numindiv < 0){ # But if less than 0 no capture
+          sampled <- sample(x = numindiv, size = 0, replace = FALSE);
+        }
+        numindiv[sampled, dcol] <- 1; # Record the individuals as captured
+      }
+    }
+    # Now need to return *both* the sampled and individuals arrays
+    samp_indiv <- list(sampled = sampled, numindiv = numindiv);
+    return(samp_indiv);
+  }
   
-#extract the output 
-
+  
+#extract the output ,  havent modified this one yet 
+  # =============================================================================
+  # Print the results
+  # =============================================================================
+  ind_abund <- array(data = NA, dim = c(40, 3));
+  for(i in 1:40){
+    ind_abund[i, 1] <- i;                      # Save the time step
+    ind_abund[i, 2] <- dim(inds_hist[[i]])[1]; # rows in inds_hist[[i]]
+    ind_abund[i, 3] <- dim(pred_hist[[i]])[1]; # rows in pred_hist[[i]]
+  }
+  colnames(ind_abund) <- c("time_step", "abundance", "predators");
+  print(ind_abund);
+  
+  # =============================================================================
+  # Plot the results
+  # =============================================================================
+  par(mar = c(5, 5, 1, 1));
+  plot(x = ind_abund[,2], type = "l", lwd = 3, ylim = c(0, 80), 
+       xlab = "time step", ylab = "Population abundance", cex.axis = 1.5, 
+       cex.lab = 1.5);
+  points(x = ind_abund[,3], type = "l", lwd = 3, col = "red");
+  legend(x = 0, y = 80, legend = c("Predator", "Prey"), col = c("red", "black"),
+         cex = 1.25, lty = c("solid", "solid"), lwd = c(3, 3));
+  
