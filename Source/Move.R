@@ -1,6 +1,6 @@
 Move=function(landscape,numindiv,numsteps,move,numcamera){
-  mvmt = numindiv[1,1:2] #x==1, y==2
-  for(s in 1:nsteps){
+  mvmt = numindiv[1] #x==1, y==2
+  for(s in 1:numsteps){
     cxpos = mvmt[(length(mvmt)-1)]
     cypos = mvmt[length(mvmt)]
     
@@ -42,7 +42,7 @@ Move=function(landscape,numindiv,numsteps,move,numcamera){
     #check to see if individual is at edge of landscape; if yes individual remains in same position
     if(xpos>=(landscape-1) | ypos>=(landscape-1) | xpos<=1 | ypos<=1){
       #fill out remaining positions
-      mvmt=c(mvmt, rep(c(xpos, ypos), (nsteps-((length(mvmt)/2)-1))))
+      mvmt=c(mvmt, rep(c(xpos, ypos), (numsteps-((length(mvmt)/2)-1))))
       
       #exit loop
       break
