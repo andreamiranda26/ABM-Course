@@ -64,11 +64,11 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
 #============================================  
 #camera stations placement?
 #============================================ 
-  cameras <- function(cams, numindiv, xcol = 2, ycol = 3, rcol = 4, dcol = 5){
+  cameras <- function(cams, numindiv, xcol = 2, ycol = 3){
     cameras   <- dim(cams)[1]; # camera number
     for(c in 1:cameras){       # For each camera (c) in the array
-      xloc   <- pred[p, xcol]; # Get the x and y locations
-      yloc   <- pred[p, ycol];
+      xloc   <- cams[p, xcol]; # Get the x and y locations
+      yloc   <- cams[p, ycol];
       numindiv <- sum( numindiv[, xcol] == xloc & numindiv[, ycol] == yloc);
   
 #=======================================  

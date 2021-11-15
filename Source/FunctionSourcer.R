@@ -9,3 +9,4 @@ setwd("~/GitHub/ABM-Course/Source")    # set temp working directory
 source(paste(getwd(), "/Landscape.R", sep = ''))
 source(paste(getwd(), "/POP.R", sep = ''))
 source(paste(getwd(), "/Move.R", sep = ''))
+source(paste(getwd(), "/Camera.R", sep = ''))

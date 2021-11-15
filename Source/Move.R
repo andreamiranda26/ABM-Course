@@ -14,7 +14,7 @@ Move=function(landscape,numindiv,numsteps,move,numcamera){
     }
     
     #move to next cell if
-    if(movehigh==1){
+    if(movenext==1){
       #find next cell
       nxtcell = which(land[(cxpos-1):(cxpos+1), (cypos-1):(cypos+1)] == max(land[(cxpos-1):(cxpos+1), (cypos-1):(cypos+1)]), arr.ind = TRUE)
       
@@ -54,18 +54,18 @@ Move=function(landscape,numindiv,numsteps,move,numcamera){
 
 #this would also go in the function part 
 # The reflecting boundary is added below this takes place of the above stuff that if individual is at the edge it stays in same position 
-for(i in 1:numindiv){           # For each individual i in the array
-  if(numindiv[i, xpos] > xmax){       # If it moved passed the maximum xloc
-    numindiv[i, xpos] <- xmax - 1;    # Then move it back toward the center
-  }
-  if(numindiv[i, xpos] < 1){          # If it moved below 1 on xloc
-    numindiv[i, xpos] <- 2;           # Move it toward the centre (2)
-  }
-  if(numindiv[i, ypos] > ymax){         # If it moved passed the maximum yloc
-    numindiv[i, ypos] <- ymax - 1;      # Then move it back toward the centre
-  }
-  if(numindiv[i, ypos] < 1){            # If it moved below 1 on yloc
-    numindiv[i, ypos] <- 2;             # Then move it toward the centre (2)
-  }
-  return(numindiv);
-} 
+# for(i in 1:numindiv){           # For each individual i in the array
+#   if(numindiv[i, xpos] > xmax){       # If it moved passed the maximum xloc
+#     numindiv[i, xpos] <- xmax - 1;    # Then move it back toward the center
+#   }
+#   if(numindiv[i, xpos] < 1){          # If it moved below 1 on xloc
+#     numindiv[i, xpos] <- 2;           # Move it toward the centre (2)
+#   }
+#   if(numindiv[i, ypos] > ymax){         # If it moved passed the maximum yloc
+#     numindiv[i, ypos] <- ymax - 1;      # Then move it back toward the centre
+#   }
+#   if(numindiv[i, ypos] < 1){            # If it moved below 1 on yloc
+#     numindiv[i, ypos] <- 2;             # Then move it toward the centre (2)
+#   }
+#   return(numindiv);
+# } 
