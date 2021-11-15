@@ -13,7 +13,7 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
   numindiv= 10  #start off with a number of individuals 
   numsteps= 1 #number of steps individuals will take 
   numreps= 5  #
-  move = 10   #Likelihood of individuals moving to the next cell
+  move = 5   #Likelihood of individuals moving to the next cell
   numcamera = 50
   
   parameters= expand.grid(landscape,numindiv,numsteps,move,numcamera) #this creates data frame for combination of variables
@@ -32,7 +32,7 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
 #initialize individuals on landscape
    
     pop = Pop(numindiv, landscape)
-    #points(Pop[,1]/100, Pop[,2]/100, pch=21, cex=0.5)
+    points(Pop[,1]/100, Pop[,2]/100, pch=21, cex=0.5)
     #pop = rbind(pop,NewPop(nindv,landscape)) #this will add the different NewPops together
     #plot(-100,-100, xlim=c(0,100), ylim=c(0,100))  #this puts the points on its own figure (note 0-100 axes)
     #points(pop[,1], pop[,2], pch=19, cex=0.5) #puts points on own fig
@@ -59,24 +59,7 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
   } 
 
     
-    #this would also go in the function part 
-    # =========   The reflecting boundary is added below
-    for(i in 1:numindiv){           # For each individual i in the array
-      if(numindiv[i, xpos] > xmax){       # If it moved passed the maximum xloc
-        numindiv[i, xpos] <- xmax - 1;    # Then move it back toward the center
-      }
-      if(numindiv[i, xpos] < 1){          # If it moved below 1 on xloc
-        numindiv[i, xpos] <- 2;           # Move it toward the centre (2)
-      }
-      if(numindiv[i, ypos] > ymax){         # If it moved passed the maximum yloc
-        numindiv[i, ypos] <- ymax - 1;      # Then move it back toward the centre
-      }
-      if(numindiv[i, ypos] < 1){            # If it moved below 1 on yloc
-        numindiv[i, ypos] <- 2;             # Then move it toward the centre (2)
-      }
-      return(numindiv);
-    } 
-  
+ 
   
 #============================================  
 #camera stations placement?

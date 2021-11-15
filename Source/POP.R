@@ -10,8 +10,8 @@ Pop = function(numindiv, landscape){
   y = sample(1:(landscape-variance), 1)
   
   #set starting locations with set variance from x,y selected above
-  pop[,1]  = x + rnorm(numindiv, variance)
-  pop[,2]  = y + rnorm(numindiv, variance)
+  pop[,1]  = x + dpois(numindiv, variance)
+  pop[,2]  = y + dpois(numindiv, variance)
   
   return(pop)
 }
