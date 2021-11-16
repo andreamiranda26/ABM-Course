@@ -32,7 +32,7 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
 #initialize individuals on landscape
    
     pop = Pop(numindiv, landscape)
-    points(Pop[,1]/100, Pop[,2]/100, pch=21, cex=0.5)
+    #points(Pop[,1]/100, Pop[,2]/100, pch=21, cex=0.5)
     #pop = rbind(pop,NewPop(nindv,landscape)) #this will add the different NewPops together
     #plot(-100,-100, xlim=c(0,100), ylim=c(0,100))  #this puts the points on its own figure (note 0-100 axes)
     #points(pop[,1], pop[,2], pch=19, cex=0.5) #puts points on own fig
