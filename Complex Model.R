@@ -37,7 +37,9 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
     #plot(-100,-100, xlim=c(0,100), ylim=c(0,100))  #this puts the points on its own figure (note 0-100 axes)
     #points(pop[,1], pop[,2], pch=19, cex=0.5) #puts points on own fig
     
-    #allow individuals to move within landscape
+    
+    
+#allow individuals to move within landscape
     pathways = NULL
     for(i in 1:nrow(pop)){
       #isolate individual of interest
@@ -61,31 +63,7 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
     
  
   
-#============================================  
-#camera stations placement?
-#============================================ 
-  cameras <- function(cams, numindiv, xcol = 2, ycol = 3){
-    cameras   <- dim(cams)[1]; # camera number
-    for(c in 1:cameras){       # For each camera (c) in the array
-      xloc   <- cams[p, xcol]; # Get the x and y locations
-      yloc   <- cams[p, ycol];
-      numindiv <- sum( numindiv[, xcol] == xloc & numindiv[, ycol] == yloc);
-  
-#=======================================  
-#tracking of individual 
-#=======================================      
-      if(numindiv > 0){ # If there is an individual, capture them
-        sampled <- which( numindiv[, xcol] == xloc & numindiv[, ycol] == yloc);
-        if(numindiv < 0){ # But if less than 0 no capture
-          sampled <- sample(x = numindiv, size = 0, replace = FALSE);
-        }
-        numindiv[sampled, dcol] <- 1; # Record the individuals as captured
-      }
-    }
-    # Now need to return *both* the sampled and individuals arrays
-    samp_indiv <- list(sampled = sampled, numindiv = numindiv);
-    return(samp_indiv);
-  }
+
   
   
 #######extract the output ,  havent modified this one yet 

@@ -1,5 +1,5 @@
 #============================================  
-#camera stations placement?
+#camera stations placement
 #============================================ 
 cameras <- function(cams, numindiv, xcol = 2, ycol = 3){
   cameras   <- dim(cams)[1]; # camera number
@@ -19,7 +19,7 @@ cameras <- function(cams, numindiv, xcol = 2, ycol = 3){
       numindiv[sampled, dcol] <- 1; # Record the individuals as captured
     }
   }
-  # Now need to return *both* the sampled and individuals arrays
-  samp_indiv <- list(sampled = sampled, numindiv = numindiv);
-  return(samp_indiv);
+  # # Now need to return *both* the sampled and individuals arrays
+  # samp_indiv <- list(sampled = sampled, numindiv = numindiv);
+  # return(samp_indiv);
 }
