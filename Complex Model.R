@@ -28,16 +28,17 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
     move      = parameters$move[p]
     numcamera = parameters$numcamera[p]
     
-
+#initialize landscape 
+    land = LandscapeInit(landscape)
+    #image(land)  
+    
 #initialize individuals on landscape
    
-    pop = Pop(numindiv, landscape)
-    #points(Pop[,1]/100, Pop[,2]/100, pch=21, cex=0.5)
-    #pop = rbind(pop,NewPop(nindv,landscape)) #this will add the different NewPops together
-    #plot(-100,-100, xlim=c(0,100), ylim=c(0,100))  #this puts the points on its own figure (note 0-100 axes)
-    #points(pop[,1], pop[,2], pch=19, cex=0.5) #puts points on own fig
+    pop = Pop(numindiv, landscape) #
     
+#place cameras on landscape
     
+    cam = cameras(cams=numcamera, numindiv, xcol = 2, ycol = 3)
     
 #allow individuals to move within landscape
     pathways = NULL
@@ -61,12 +62,9 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
   } 
 
     
- 
   
-
-  
-  
-#######extract the output ,  havent modified this one yet 
+  ###extract the output 
+  #havent modified this one yet 
   # =============================================================================
   # Print the results
   # =============================================================================

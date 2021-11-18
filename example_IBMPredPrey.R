@@ -75,7 +75,7 @@ predation <- function(pred, inds, xcol = 2, ycol = 3, rcol = 4, dcol = 5){
   pred[, rcol] <- 0;           # Assume not reproducing until proven otherwise
   for(p in 1:predators){       # For each predator (p) in the array
     xloc   <- pred[p, xcol]; # Get the x and y locations
-    yloc   <- pred[p, ycol];
+    yloc   <- pred[p, ycol]; 
     N_prey <- sum( inds[, xcol] == xloc & inds[, ycol] == yloc);
     # ----- Let's take care of the predator first below
     if(N_prey > 0){
