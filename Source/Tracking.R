@@ -7,5 +7,13 @@ if(numindiv > 0){ # If there is an individual, capture them
   if(numindiv < 0){ # But if less than 0 no capture
     sampled <- sample(x = numindiv, size = 0, replace = FALSE);
   }
-  numindiv[sampled, dcol] <- 1; # Record the individuals as captured
+   # Record the individuals as captured
+}
+for(m in 1:nrow(pop)){
+  for(n in 1:nrow(CAM)){
+    sub <- CAM[CAM[n,2] == pop[m,2] & CAM[n,3] == pop[m,3],]
+    if(nrow(sub) > 0){
+      [ store somewhere that this individual was captured, ID = pop[m,1]]
+    }
+  }
 }
