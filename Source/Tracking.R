@@ -1,19 +1,11 @@
 
-
-#tracking of individual #this would be easier if we have the individuals iterating once at a time but with the same placement of cameras and the same x and y coordinates of paths? 
-
-if(numindiv > 0){ # If there is an individual, capture them
-  sampled <- which( numindiv[, xcol] == xloc & numindiv[, ycol] == yloc);
-  if(numindiv < 0){ # But if less than 0 no capture
-    sampled <- sample(x = numindiv, size = 0, replace = FALSE);
-  }
    # Record the individuals as captured
-}
-for(m in 1:nrow(pop)){
-  for(n in 1:nrow(CAM)){
-    sub <- CAM[CAM[n,2] == pop[m,2] & CAM[n,3] == pop[m,3],]
-    if(nrow(sub) > 0){
-      [ store somewhere that this individual was captured, ID = pop[m,1]]
+
+for(m in 1:nrow(pop)){  # the first loop (m in 1:nrow(pop)) loops over each individual in your dataset, and for each individual, the second loop (n in 1:nrow(CAM)) loops over the camera locations stored in CAM to see if any camera locations match the individual's location (the sub <- ... line)
+  for(n in 1:nrow(CAM)){ #for the number of cameras in a cell
+    sub <- CAM[CAM[n,2] == pop[m,2] & CAM[n,3] == pop[m,3],]  #to see if any camera locations match the individual's location (the sub <- ... line)
+    if(nrow(sub) > 0){ #if there's at least one match (nrow(sub) > 0 ), then you can store the information... 
+      [ store somewhere that this individual was captured, ID = pop[m,1]] #store somewhere that this individual was captured,you could do something similar as with CAM, where you initialize an empty object with 'OUT <- NULL' and rbind sub to that object
     }
   }
 }

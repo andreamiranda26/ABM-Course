@@ -6,7 +6,7 @@ Move=function(landscape,numindiv,numsteps,move,numcamera){
     
     #determine if indiv will move randomly or will move to next cell
     movenext = sample(x=c(0,1), size=1, prob=c((1-move), move))
-    
+     
     #random movement to adjacent cell/patch
     if(movenext==0){
       xpos = sample(c(-1,0,1), 1) + cxpos
@@ -52,20 +52,3 @@ Move=function(landscape,numindiv,numsteps,move,numcamera){
   return(mvmt)
 }
 
-#this would also go in the function part 
-# The reflecting boundary is added below this takes place of the above stuff that if individual is at the edge it stays in same position 
-# for(i in 1:numindiv){           # For each individual i in the array
-#   if(numindiv[i, xpos] > xmax){       # If it moved passed the maximum xloc
-#     numindiv[i, xpos] <- xmax - 1;    # Then move it back toward the center
-#   }
-#   if(numindiv[i, xpos] < 1){          # If it moved below 1 on xloc
-#     numindiv[i, xpos] <- 2;           # Move it toward the centre (2)
-#   }
-#   if(numindiv[i, ypos] > ymax){         # If it moved passed the maximum yloc
-#     numindiv[i, ypos] <- ymax - 1;      # Then move it back toward the centre
-#   }
-#   if(numindiv[i, ypos] < 1){            # If it moved below 1 on yloc
-#     numindiv[i, ypos] <- 2;             # Then move it toward the centre (2)
-#   }
-#   return(numindiv);
-# } 
