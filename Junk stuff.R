@@ -1,3 +1,12 @@
+
+pathways = NULL
+for(i in 1:nrow(pop)){
+  #isolate individual of interest
+  numindiv = pop[i,,drop=FALSE]
+  #the i means iterates
+
+[ store somewhere that this individual was captured, ID = pop[m,1]] #store somewhere that this individual was captured,you could do something similar as with CAM, where you initialize an empty object with 'OUT <- NULL' and rbind sub to that objec
+
 #tracking of individual #this would be easier if we have the individuals iterating once at a time but with the same placement of cameras and the same x and y coordinates of paths? 
 
 if(numindiv > 0){ # If there is an individual, capture them

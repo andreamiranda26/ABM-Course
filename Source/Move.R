@@ -1,3 +1,4 @@
+
 Move=function(landscape,numindiv,numsteps,move,numcamera){
   mvmt = numindiv[1] #x==1, y==2
   for(s in 1:numsteps){

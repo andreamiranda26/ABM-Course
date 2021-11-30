@@ -38,14 +38,10 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
     
 #place cameras on landscape
     
-    cam = cameras(cams=numcamera, numindiv, xcol = 2, ycol = 3)
+    cam = cameras(numcamera)
     
 #allow individuals to move within landscape
-    pathways = NULL
-    for(i in 1:nrow(pop)){
-      #isolate individual of interest
-      numindiv = pop[i,,drop=FALSE]
-      #the i means iterates
+    move= Move(landscape,numindiv,numsteps,move,numcamera)
       
  #####     #chart movement
       movepath = Move(landscape,numindiv,numsteps,move,numcamera)
