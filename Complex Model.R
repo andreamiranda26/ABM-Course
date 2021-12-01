@@ -1,3 +1,4 @@
+#complex model run for ABM Class Fall 2021
 
 setwd("~/GitHub/ABM-Course")
 
@@ -20,7 +21,9 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
   colnames(parameters) = c("landscape","numindiv","numsteps","move","numcamera")
   
   
-
+  RunModel = function(parameters, p, directory, replicates){
+    FINAL = NULL
+    
   for(p in 1:nrow(parameters)){
     landscape = parameters$landscape[p]
     numindiv  = parameters$numindiv[p]
@@ -33,7 +36,7 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
     #image(land)  
     
 #initialize individuals on landscape
-   
+   pop=matrix(nrow= numindiv, ncol=10) #each individual gets its own row
     pop = Pop(numindiv, landscape) #
     
 #place cameras on landscape
