@@ -2,16 +2,17 @@
 #camera stations placement
 
 
-CAM <- NULL #CAM,initialize an empty object with 'CAM <- NULL' and rbind sub to that object
 
 cameras <- function(numcamera){ 
-  for(c in 1:numcamera){
-    #k=50
+  
+  ID= seq(1,numcamera,1) 
+  
     xloc <- sample(1:nrow(land), numcamera) #takes a camera x location out of the landscape
-    yloc <- sample(1:nrow(land), numcamera) #takes a y location of the camera on landscape
+    yloc <- sample(1:ncol(land), numcamera) #takes a y location of the camera on landscape
     
-    save <- c(c, xloc, yloc)
-    CAM <- rbind(CAM, save)
+  
+    CAM <- cbind(ID, xloc,yloc) #creates that whole CAM object
+    
+    return(CAM) #this will spit it out when run in complex model
   }
-}
 

@@ -14,15 +14,15 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
   numindiv= 10  #start off with a number of individuals 
   numsteps= 1 #number of steps individuals will take 
   numreps= 5  #
-  move = 5   #Likelihood of individuals moving to the next cell
+  move = .95  #Likelihood of individuals moving to the next cell 95% of the time they will move 
   numcamera = 50
   
   parameters= expand.grid(landscape,numindiv,numsteps,move,numcamera) #this creates data frame for combination of variables
   colnames(parameters) = c("landscape","numindiv","numsteps","move","numcamera")
   
   
-  RunModel = function(parameters, p, directory, replicates){
-    FINAL = NULL
+   #RunModel = function(parameters, p, directory, replicates){
+  #   FINAL = NULL
     
   for(p in 1:nrow(parameters)){
     landscape = parameters$landscape[p]
@@ -36,28 +36,35 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
     #image(land)  
     
 #initialize individuals on landscape
-   pop=matrix(nrow= numindiv, ncol=10) #each individual gets its own row
-    pop = Pop(numindiv, landscape) #
+   #pop=matrix(nrow= numindiv, ncol=10) #each individual gets its own row
+    pop = Pop(numindiv, land) #
     
 #place cameras on landscape
     
     cam = cameras(numcamera)
     
 #allow individuals to move within landscape
+    
+    
+    
+    
     pathways = NULL
     for(i in 1:nrow(pop)){
       #isolate individual of interest
-      numindiv = pop[i,,drop=FALSE]
+      n = pop[i,,drop=FALSE] #FIXX
       #the i means iterates
-      movepath = Move(landscape,numindiv,numsteps,move,numcamera)
+      movepath = Move(landscape,n,numsteps,move,numcamera)
       
-      #plot movement
-      lines(movepath[seq(1,length(movepath), 2)]/100, movepath[seq(2,length(movepath), 2)]/100, lwd=2)
-      
-      #record path in single object for all individuals
       pathways = rbind(pathways, movepath)
       
+      # #plot movement
+      # lines(movepath[seq(1,length(movepath), 2)]/100, movepath[seq(2,length(movepath), 2)]/100, lwd=2)
+      # 
+      #record path in single object for all individuals
+      #pathways = rbind(pathways, movepath)
+      
     }
+    pop = cbind(pop ,pathways) #will have the same initial points twice 
 
   
   } 

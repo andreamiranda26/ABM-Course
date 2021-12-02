@@ -1,12 +1,10 @@
 
-Move=function(landscape,numindiv,numsteps,move,numcamera){
-  mvmt = numindiv[1] #x==1, y==2
-  for(s in 1:numsteps){
-    cxpos = mvmt[(length(mvmt)-1)]
-    cypos = mvmt[length(mvmt)]
+Move=function(landscape,n,numsteps,move,numcamera){
+ 
+  for(s in 1:numsteps){ #numsteps needs to be step size to be 1 cell at a time numsteps should be like 50 
     
     #determine if indiv will move randomly or will move to next cell
-    movenext = sample(x=c(0,1), size=1, prob=c((1-move), move))
+    movenext = sample(x=c(0,1), size=1, prob=c((1-move), move)) #this one works with the move parameter in complex model which says that they will move 95% of the time and stay in cell 5% of time.
      
     #random movement to adjacent cell/patch
     if(movenext==0){
