@@ -20,7 +20,7 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
   parameters= expand.grid(landscape,numindiv,numsteps,move,numcamera) #this creates data frame for combination of variables
   colnames(parameters) = c("landscape","numindiv","numsteps","move","numcamera")
   
-  
+  #=====This is something 
    #RunModel = function(parameters, p, directory, replicates){
   #   FINAL = NULL
     
@@ -43,10 +43,7 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
     
     cam = cameras(numcamera)
     
-#allow individuals to move within landscape
-    
-    
-    
+#Combining location of cameras and individuals 
     
     pathways = NULL
     for(i in 1:nrow(pop)){
@@ -66,8 +63,11 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
   
   ###extract the output 
   
+  write.table(pop, paste(directory, "/Output/summary_", ".csv", sep=""), sep=",", col.names=TRUE, append=FALSE, quote=FALSE, row.names=FALSE)
+  #summary table should have nrows = the individuals and columns are the initial locations of the individuals (first xloc and yloc) and the rest of the xloc and y loc are the the places where both individuals and cameras were found
+  #^^ may have some fewer than above because some simulations may break before all years are able to be run
   
-  
+  plot(pop)
   
   
   
