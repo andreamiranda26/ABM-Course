@@ -54,10 +54,8 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
       n = pop[i,,drop=FALSE] #FIXX
       #the i means iterates
       movepath = Move(landscape,n,numsteps,move,numcamera)
-      
+      #plot(movepath[seq(1,100,2)], movepath[seq(2,100,2)], type="b")
       pathways = rbind(pathways, movepath)
-      
-      
     }
     pop = cbind(pop ,pathways) #will have the same initial points twice 
 
