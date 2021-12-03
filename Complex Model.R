@@ -65,7 +65,7 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
   
   write.table(pop, paste(directory, "/Output/summary_", ".csv", sep=""), sep=",", col.names=TRUE, append=FALSE, quote=FALSE, row.names=FALSE)
   #summary table should have nrows = the individuals and columns are the initial locations of the individuals (first xloc and yloc) and the rest of the xloc and y loc are the the places where both individuals and cameras were found
-  #^^ may have some fewer than above because some simulations may break before all years are able to be run
+  
   
   plot(pop)
   
