@@ -12,7 +12,7 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
 
   landscape = 100
   numindiv= 10  #start off with a number of individuals 
-  numsteps= 1 #number of steps individuals will take 
+  numsteps= 50 #number of steps individuals will take 
   numreps= 5  #
   move = .95  #Likelihood of individuals moving to the next cell 95% of the time they will move 
   numcamera = 50
@@ -57,11 +57,6 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
       
       pathways = rbind(pathways, movepath)
       
-      # #plot movement
-      # lines(movepath[seq(1,length(movepath), 2)]/100, movepath[seq(2,length(movepath), 2)]/100, lwd=2)
-      # 
-      #record path in single object for all individuals
-      #pathways = rbind(pathways, movepath)
       
     }
     pop = cbind(pop ,pathways) #will have the same initial points twice 
