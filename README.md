@@ -14,7 +14,7 @@ We have outlined our model goals, parameters, and expected functions using the O
 
 We will use an agent based model to compare the accuracy of individual detections among our simulated populations. Our models will simulate, at the individual level, a population. We will manipulate population density, and movement patterns for individuals. This model will serve as a backbone for a future simulation that will be built . We have outlined our model goals, parameters, and expected functions using the ODD protocol (Grimm et al. 2020):
 
-1. Overview
+Overview
 Purpose: This model will compare population size estimates of camera trapping. 
 
 Entities, state variables, and scale: Our models will have two entities: individuals that move around the landscape and the landscape itself. The individuals will be characterized by a unique ID and will be permitted to move at specified rates and directions. The landscape will include a grid of squares that will represent a unit area, scaled such that a square is equal to the distance an individual moves in a day. The landscape will also include sample locations, which will represent the location of cameras.
