@@ -13,7 +13,7 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
   landscape = 100
   numindiv= 10  #start off with a number of individuals 
   numsteps= 50 #number of steps individuals will take 
-  numreps= 5  #
+  numreps= 1  #
   move = .95  #Likelihood of individuals moving to the next cell 95% of the time they will move 
   numcamera = 50
   
@@ -21,7 +21,7 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
   colnames(parameters) = c("landscape","numindiv","numsteps","move","numcamera")
   
   #=====This is something 
-   #RunModel = function(parameters, p, directory, replicates){
+   #RunModel = function(parameters, p, directory, numreps){
   #   FINAL = NULL
     
   for(p in 1:nrow(parameters)){
@@ -48,10 +48,10 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
     pathways = NULL
     for(i in 1:nrow(pop)){
       #isolate individual of interest
-      n = pop[i,,drop=FALSE] #FIXX
+      n = pop[i,,drop=FALSE] 
       #the i means iterates
       movepath = Move(landscape,n,numsteps,move,numcamera)
-      #plot(movepath[seq(1,100,2)], movepath[seq(2,100,2)], type="b")
+      #plot(movepath[seq(1,100,2)], movepath[seq(2,100,2)], type="b") #type b means both points and lines this will show the paths a little better
       pathways = rbind(pathways, movepath)
     }
     pop = cbind(pop ,pathways) #will have the same initial points twice 

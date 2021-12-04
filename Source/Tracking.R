@@ -10,7 +10,7 @@ for(m in 1:nrow(pop)){  # the first loop (m in 1:nrow(pop)) loops over each indi
     sub <- cam[cam[n,2] == tempx  & cam[n,3] == tempy, ]#to see if any camera locations match the individual's location (the sub <- ... line)
     if(nrow(sub) > 0){ #if there's at least one match (nrow(sub) > 0 ), then you can store the information... 
        IDS= pop[m,1] #store somewhere that this individual was captured,you could do something similar as with CAM, where you initialize an empty object with 'OUT <- NULL' and rbind sub to that object
-      save<- c(m,n,sub, IDS)
+      save<- c(m,n,sub,IDS)
       Track <- rbind(Track, save)
       
     }
