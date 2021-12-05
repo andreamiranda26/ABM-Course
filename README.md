@@ -33,3 +33,7 @@ Functions/subroutines: Our model will include two major functions: movement and 
 
 We expect that the more cameras placed on the lansdcape the more they will capture individuals. In this study, it is possible that we will not find any differences in individual counts between different number of cameras placed on the landscape.
 
+**Results**
+
+Results can be found in the output folder and the Model Results document. 
+
