@@ -55,10 +55,10 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
       n = pop[i,,drop=FALSE] 
       #the i means iterates
       movepath = Move(landscape,n,numsteps,move,numcamera)
-      #plot(movepath[seq(1,100,2)], movepath[seq(2,100,2)], type="b") #type b means both points and lines this will show the paths a little better
+      #plot(movepath[seq(1,100,2)]= "location on x", movepath[seq(2,100,2)] = "location on y", type="b") #type b means both points and lines this will show the paths a little better
       pathways = rbind(pathways, movepath) # record path in a single object for all individuals 
       
-      plot(pathways, type= "b") #this one gives me yloc in y and xloc in x axis
+      plot(pathways, type= "p") #this one gives me yloc in y and xloc in x axis
       #this is the path recorded in one figure for all 10 individuals?
       dev.copy(png, "../output/Pathways.png") #This will give you the same plot above but saves it to the source folder that you had everything 
       dev.off()
@@ -67,7 +67,7 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
     #Output 
     pop = cbind(pop ,pathways) #will have the same initial points twice 
     
-    plot(pop, type= "b") #this gives me xloc n y axis and ID in x axis, I assume this is where the individuals ended up at the end of the 50 steps
+    plot(pop, type= "p") #this gives me xloc n y axis and ID in x axis, I assume this is where the individuals ended up at the end of the 50 steps
     dev.copy(png, "../output/pop.png") #This will give you the same plot above but saves it to the output
     dev.off()
   } 
