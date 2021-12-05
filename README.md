@@ -1,6 +1,6 @@
 ## Complex Model 
 
-- ## Using modeling to compare population monitoring through camera trapping
+- ## Using modeling to simulate population counts using camera trapping
 
 **Andrea Miranda and Dr. Janna Willoughby**
 
