@@ -37,7 +37,9 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
     
 #initialize individuals on landscape
    #pop=matrix(nrow= numindiv, ncol=10) #each individual gets its own row
-    pop = Pop(numindiv, land) #
+    pop = Pop(numindiv, land) #individuals placed on the landscape 
+    
+    
     
 #place cameras on landscape
     
@@ -64,7 +66,7 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
     pop = cbind(pop ,pathways) #will have the same initial points twice 
     
     plot(pop, type= "b") #this gives me xloc n y axis and ID in x axis, I assume this is where the individuals ended up at the end of the 50 steps
-    dev.copy(png, "../output/pop.png") #This will give you the same plot above but saves it to the output folder
+    dev.copy(png, "../output/pop.png") #This will give you the same plot above but saves it to the output
     dev.off()
   } 
 
