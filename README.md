@@ -1,6 +1,6 @@
 ## Complex Model 
 
-- ## Using modeling to simulate population counts using camera trapping
+- ## Creating an ABM to simulate population counts through camera trapping
 
 **Andrea Miranda and Dr. Janna Willoughby**
 
