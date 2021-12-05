@@ -8,6 +8,7 @@ for(m in 1:nrow(pop)){  # the first loop (m in 1:nrow(pop)) loops over each indi
     tempx = pop[m,seq(2,ncol(pop),2)] #we added the variables because it would complain that it was too long
      tempy = pop[m,seq(3,ncol(pop),2)] #sequence starting at number 3 (top line starts at 2 for even numbers) , for the length of pop, every odd number which is two to do every other number 
     sub <- cam[cam[n,2] == tempx  & cam[n,3] == tempy, ]#to see if any camera locations match the individual's location (the sub <- ... line)
+    
     if(nrow(sub) > 0){ #if there's at least one match (nrow(sub) > 0 ), then you can store the information... 
        IDS= pop[m,1] #store somewhere that this individual was captured,you could do something similar as with CAM, where you initialize an empty object with 'OUT <- NULL' and rbind sub to that object
       save<- c(m,n,sub,IDS)
@@ -25,4 +26,9 @@ for(m in 1:nrow(pop)){  # the first loop (m in 1:nrow(pop)) loops over each indi
 
 ##This is what I will work on after class**
   #find other r packages  this is for future coding 
+  ##I was trying something that I found online but...I need to think about it more 
+# first<- cam[any(cam[n,2] %in% tempx)] 
+# then<- cam[any(cam[n,3] %in% tempy)]
+# sub<- cam[any(first %in% then)]
+#link for later -> https://hbctraining.github.io/Intro-to-R/lessons/06_matching_reordering.html
 
