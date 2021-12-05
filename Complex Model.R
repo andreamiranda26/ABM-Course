@@ -46,6 +46,10 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
 #place cameras on landscape
     
     cam = cameras(numcamera)
+    plot(cam)
+    write.table(cam, paste(directory, "/Output/cameralocation", ".csv", sep=""), sep=",", col.names=TRUE, append=FALSE, quote=FALSE, row.names=FALSE)
+    #summary table should have nrows = the individuals and columns are the initial locations of the individuals (first xloc and yloc) and the rest of the xloc and y loc are the the places where both individuals and cameras were found
+    
     
 #Combining location of cameras and individuals 
     
