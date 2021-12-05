@@ -38,6 +38,8 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
 #initialize individuals on landscape
    #pop=matrix(nrow= numindiv, ncol=10) #each individual gets its own row
     pop = Pop(numindiv, land) #individuals placed on the landscape 
+    write.table(pop, paste(directory, "/Output/initialpoploc_", ".csv", sep=""), sep=",", col.names=TRUE, append=FALSE, quote=FALSE, row.names=FALSE)
+    #summary table should have nrows = the individuals and columns are the initial locations of the individuals (first xloc and yloc) 
     
     
     
@@ -57,7 +59,7 @@ source(paste(directory, "/source/FunctionSourcer.R", sep =''))
       pathways = rbind(pathways, movepath) # record path in a single object for all individuals 
       
       plot(pathways, type= "b") #this one gives me yloc in y and xloc in x axis
-      #this is the path recorded in one figure for all 10 individuals
+      #this is the path recorded in one figure for all 10 individuals?
       dev.copy(png, "../output/Pathways.png") #This will give you the same plot above but saves it to the source folder that you had everything 
       dev.off()
       
